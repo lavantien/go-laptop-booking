@@ -7,4 +7,7 @@ gen:
 clean:
 	rm pb/*.go
 
+test:
+	go test -cover -race -v -count=1 ./...
+
 .PHONY: run gen

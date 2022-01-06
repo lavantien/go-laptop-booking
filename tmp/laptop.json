@@ -1,22 +1,3 @@
-# Laptop Booking Application in Golang and gRPC
-
-## Technology Stack
-
-- **[Go 1.17](https://go.dev/)**
-- **[gRPC](https://grpc.io/)**
-
-## Get Start
-
-- Clean the generated Go code: `make clean`
-- Generate Go code of gRPC proto files: `make gen`
-- Run the application: `make run`
-- Run the tests: `make test`
-
-## Sample
-
-- Laptop JSON
-
-```json
 {
   "id": "21d24c33-13fc-49cb-9e15-85969be270b5",
   "brand": "Apple",
@@ -79,4 +60,3 @@
   "release_year": 2015,
   "updated_at": "2022-01-06T22:55:18.744484334Z"
 }
-```
