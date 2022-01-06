@@ -8,6 +8,9 @@ clean:
 	rm pb/*.go
 
 test:
-	go test -cover -race -v -count=1 ./...
+	go test -cover -coverprofile=profile.cov -race -v -count=1 ./...
 
-.PHONY: run gen
+badger:
+	gopherbadger -md="README.md"
+
+.PHONY: run gen clean test cover badger

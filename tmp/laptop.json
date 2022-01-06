@@ -1,62 +1,62 @@
 {
-  "id": "21d24c33-13fc-49cb-9e15-85969be270b5",
-  "brand": "Apple",
-  "name": "Macbook Pro",
-  "cpu": {
-    "brand": "AMD",
-    "name": "Ryzen 7 PRO 2700U",
-    "number_cores": 4,
-    "number_threads": 11,
-    "min_ghz": 2.4010226599566113,
-    "max_ghz": 3.3472808181192493
+  "id":  "b7151f63-8ee3-47df-9f95-0056056eeffc",
+  "brand":  "Apple",
+  "name":  "Macbook Pro",
+  "cpu":  {
+    "brand":  "Intel",
+    "name":  "Core i5-9400F",
+    "number_cores":  7,
+    "number_threads":  9,
+    "min_ghz":  2.377836697563518,
+    "max_ghz":  3.016307378262445
   },
-  "ram": {
-    "value": "56",
-    "unit": "GIGABYTE"
+  "ram":  {
+    "value":  "24",
+    "unit":  "GIGABYTE"
   },
-  "gpus": [
+  "gpus":  [
     {
-      "brand": "AMD",
-      "name": "RX 580",
-      "min_ghz": 1.438777166984461,
-      "max_ghz": 1.9419486357490028,
-      "memory": {
-        "value": "6",
-        "unit": "GIGABYTE"
+      "brand":  "NVIDIA",
+      "name":  "RTX 2070",
+      "min_ghz":  1.4945098340488214,
+      "max_ghz":  1.5468672237968106,
+      "memory":  {
+        "value":  "3",
+        "unit":  "GIGABYTE"
       }
     }
   ],
-  "storages": [
+  "storages":  [
     {
-      "driver": "SSD",
-      "memory": {
-        "value": "712",
-        "unit": "GIGABYTE"
+      "driver":  "SSD",
+      "memory":  {
+        "value":  "147",
+        "unit":  "GIGABYTE"
       }
     },
     {
-      "driver": "HDD",
-      "memory": {
-        "value": "3",
-        "unit": "TERABYTE"
+      "driver":  "HDD",
+      "memory":  {
+        "value":  "2",
+        "unit":  "TERABYTE"
       }
     }
   ],
-  "screen": {
-    "size_inch": 15.036544,
-    "resolution": {
-      "width": 4325,
-      "height": 2433
+  "screen":  {
+    "size_inch":  13.642284,
+    "resolution":  {
+      "width":  6076,
+      "height":  3418
     },
-    "panel": "OLED",
-    "multitouch": false
+    "panel":  "OLED",
+    "multitouch":  true
   },
-  "keyboard": {
-    "layout": "AZERTY",
-    "backlit": false
+  "keyboard":  {
+    "layout":  "QWERTZ",
+    "backlit":  true
   },
-  "weight_kg": 1.7960889307648087,
-  "price_usd": 1841.1951352165595,
-  "release_year": 2015,
-  "updated_at": "2022-01-06T22:55:18.744484334Z"
+  "weight_kg":  1.1881021480100786,
+  "price_usd":  2388.051832334421,
+  "release_year":  2015,
+  "updated_at":  "2022-01-06T23:03:48.378766952Z"
 }
