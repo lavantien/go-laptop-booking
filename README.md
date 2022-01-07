@@ -1,7 +1,7 @@
 # Laptop Booking Application in Golang and gRPC
 
 ![ci-test](https://github.com/lavantien/go-laptop-booking/actions/workflows/ci.yml/badge.svg?branch=master)
- <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-75%25-brightgreen.svg?longCache=true&style=flat)</a>
+ <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-80%25-brightgreen.svg?longCache=true&style=flat)</a>
 
 ## Technology Stack
 
@@ -12,13 +12,17 @@
 
 - Clean the generated Go code: `make clean`
 - Generate Go code of gRPC proto files: `make gen`
-- Run the application: `make run`
+- Run the server: `make server`
+- Run the client: `make client`
 - Run the tests: `make test`
 - Run the coverage and update the badger: `make badger`
 
 ## Sample
 
 - Laptop JSON
+
+<details>
+	<summary>See datails</summary>
 
 ```json
 {
@@ -84,3 +88,5 @@
   "updated_at": "2022-01-06T22:55:18.744484334Z"
 }
 ```
+
+</details>

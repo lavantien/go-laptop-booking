@@ -1,27 +1,27 @@
 {
-  "id":  "b7151f63-8ee3-47df-9f95-0056056eeffc",
-  "brand":  "Apple",
-  "name":  "Macbook Pro",
+  "id":  "4f492472-30ec-4aaa-83e8-2107fb3a89b2",
+  "brand":  "Dell",
+  "name":  "Alienware",
   "cpu":  {
-    "brand":  "Intel",
-    "name":  "Core i5-9400F",
-    "number_cores":  7,
-    "number_threads":  9,
-    "min_ghz":  2.377836697563518,
-    "max_ghz":  3.016307378262445
+    "brand":  "AMD",
+    "name":  "Ryzen 3 PRO 3200GE",
+    "number_cores":  8,
+    "number_threads":  11,
+    "min_ghz":  2.223829296617224,
+    "max_ghz":  3.5011976843965305
   },
   "ram":  {
-    "value":  "24",
+    "value":  "7",
     "unit":  "GIGABYTE"
   },
   "gpus":  [
     {
-      "brand":  "NVIDIA",
-      "name":  "RTX 2070",
-      "min_ghz":  1.4945098340488214,
-      "max_ghz":  1.5468672237968106,
+      "brand":  "AMD",
+      "name":  "RX 590",
+      "min_ghz":  1.4252728108919184,
+      "max_ghz":  1.5729478543553819,
       "memory":  {
-        "value":  "3",
+        "value":  "2",
         "unit":  "GIGABYTE"
       }
     }
@@ -30,33 +30,33 @@
     {
       "driver":  "SSD",
       "memory":  {
-        "value":  "147",
+        "value":  "995",
         "unit":  "GIGABYTE"
       }
     },
     {
       "driver":  "HDD",
       "memory":  {
-        "value":  "2",
+        "value":  "6",
         "unit":  "TERABYTE"
       }
     }
   ],
   "screen":  {
-    "size_inch":  13.642284,
+    "size_inch":  15.314177,
     "resolution":  {
-      "width":  6076,
-      "height":  3418
+      "width":  3820,
+      "height":  2149
     },
-    "panel":  "OLED",
+    "panel":  "IPS",
     "multitouch":  true
   },
   "keyboard":  {
-    "layout":  "QWERTZ",
-    "backlit":  true
+    "layout":  "AZERTY",
+    "backlit":  false
   },
-  "weight_kg":  1.1881021480100786,
-  "price_usd":  2388.051832334421,
+  "weight_kg":  1.1100983876391028,
+  "price_usd":  1947.4501930952874,
   "release_year":  2015,
-  "updated_at":  "2022-01-06T23:03:48.378766952Z"
+  "updated_at":  "2022-01-07T03:33:04.783914427Z"
 }
