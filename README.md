@@ -5,17 +5,17 @@
 
 ## Goals
 
-[X] GitHub CI & Coverage Badge
-[X] Serialize protobuf messages
-[X] Unary gRPC
-[X] Server-streaming gRPC
-[ ] Chunk uploading with client-streaming gRPC
-[ ] Bidirectional-streaming gRPC
-[ ] gRPC reflection and Evans CLI
-[ ] gRPC interceptor & JWT authentication
-[ ] Secure gRPC connection with SSL/TLS
-[ ] Load balancing gRPC service with NGINX
-[ ] Generate RESTful service and Swagger documentation with gRPC gateway
+- [X] GitHub CI & Coverage Badge
+- [X] Serialize protobuf messages
+- [X] Unary gRPC
+- [X] Server-streaming gRPC
+- [ ] Chunk uploading with client-streaming gRPC
+- [ ] Bidirectional-streaming gRPC
+- [ ] gRPC reflection and Evans CLI
+- [ ] gRPC interceptor & JWT authentication
+- [ ] Secure gRPC connection with SSL/TLS
+- [ ] Load balancing gRPC service with NGINX
+- [ ] Generate RESTful service and Swagger documentation with gRPC gateway
 
 ## Technology Stack
 
