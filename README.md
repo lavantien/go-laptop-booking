@@ -1,7 +1,21 @@
 # Laptop Booking Application in Golang and gRPC
 
 ![ci-test](https://github.com/lavantien/go-laptop-booking/actions/workflows/ci.yml/badge.svg?branch=master)
- <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-80%25-brightgreen.svg?longCache=true&style=flat)</a>
+ <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-76%25-brightgreen.svg?longCache=true&style=flat)</a>
+
+## Goals
+
+[X] GitHub CI & Coverage Badge
+[X] Serialize protobuf messages
+[X] Unary gRPC
+[X] Server-streaming gRPC
+[ ] Chunk uploading with client-streaming gRPC
+[ ] Bidirectional-streaming gRPC
+[ ] gRPC reflection and Evans CLI
+[ ] gRPC interceptor & JWT authentication
+[ ] Secure gRPC connection with SSL/TLS
+[ ] Load balancing gRPC service with NGINX
+[ ] Generate RESTful service and Swagger documentation with gRPC gateway
 
 ## Technology Stack
 
