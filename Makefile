@@ -18,6 +18,10 @@ server: SHELL:=/usr/bin/zsh
 server:
 	GOTRACEBACK=all go run cmd/server/main.go -port 8080 |& pp
 
+rest: SHELL:=/usr/bin/zsh
+rest:
+	GOTRACEBACK=all go run cmd/server/main.go -port 8081 -type rest -endpoint 0.0.0.0:8080 |& pp
+
 client:
 	go run cmd/client/main.go -address 0.0.0.0:8080
 
@@ -25,7 +29,8 @@ clienttls:
 	go run cmd/client/main.go -address 0.0.0.0:8080 -tls
 
 gen:
-	protoc --proto_path=proto --go_out=plugins=grpc:pb --go_opt=paths=source_relative proto/*.proto
+	# protoc --proto_path=proto --go_out=plugins=grpc:pb --go_opt=paths=source_relative --grpc-gateway_out=. --openapiv2_out=openapi proto/*.proto
+	protoc --proto_path=proto proto/*.proto  --go_out=:pb --go-grpc_out=:pb --grpc-gateway_out=:pb --openapiv2_out=:openapi
 
 clean:
 	rm pb/*.go

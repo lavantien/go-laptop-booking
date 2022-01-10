@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: auth_service.proto
+  version: version not set
+servers:
+  - url: /
+tags:
+  - name: AuthService
+paths:
+  /v1/auth/login:
+    post:
+      tags:
+        - AuthService
+      operationId: AuthService_Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pbLoginRequest'
+        required: true
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pbLoginResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    pbLoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    pbLoginResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties:
+        type: object
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'

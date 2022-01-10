@@ -1,0 +1,393 @@
+openapi: 3.0.1
+info:
+  title: laptop_service.proto
+  version: version not set
+servers:
+  - url: /
+tags:
+  - name: LaptopService
+paths:
+  /v1/laptop/create:
+    post:
+      tags:
+        - LaptopService
+      operationId: LaptopService_CreateLaptop
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pbCreateLaptopRequest'
+        required: true
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pbCreateLaptopResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      x-codegen-request-body-name: body
+  /v1/laptop/rate:
+    post:
+      tags:
+        - LaptopService
+      operationId: LaptopService_RateLaptop
+      requestBody:
+        description: ' (streaming inputs)'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pbRateLaptopRequest'
+        required: true
+      responses:
+        200:
+          description: A successful response.(streaming responses)
+          content:
+            application/json:
+              schema:
+                title: Stream result of pbRateLaptopResponse
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/pbRateLaptopResponse'
+                  error:
+                    $ref: '#/components/schemas/rpcStatus'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      x-codegen-request-body-name: body
+  /v1/laptop/search:
+    get:
+      tags:
+        - LaptopService
+      operationId: LaptopService_SearchLaptop
+      parameters:
+        - name: filter.maxPriceUsd
+          in: query
+          schema:
+            type: number
+            format: double
+        - name: filter.minCpuCores
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: filter.minCpuGhz
+          in: query
+          schema:
+            type: number
+            format: double
+        - name: filter.minRam.value
+          in: query
+          schema:
+            type: string
+            format: uint64
+        - name: filter.minRam.unit
+          in: query
+          schema:
+            type: string
+            default: UNKNOWN
+            enum:
+              - UNKNOWN
+              - BIT
+              - BYTE
+              - KILOBYTE
+              - MEGABYTE
+              - GIGABYTE
+              - TERABYTE
+      responses:
+        200:
+          description: A successful response.(streaming responses)
+          content:
+            application/json:
+              schema:
+                title: Stream result of pbSearchLaptopResponse
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/pbSearchLaptopResponse'
+                  error:
+                    $ref: '#/components/schemas/rpcStatus'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+  /v1/laptop/upload_image:
+    post:
+      tags:
+        - LaptopService
+      operationId: LaptopService_UploadImage
+      requestBody:
+        description: ' (streaming inputs)'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pbUploadImageRequest'
+        required: true
+      responses:
+        200:
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pbUploadImageResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    KeyboardLayout:
+      type: string
+      default: UNKNOWN
+      enum:
+        - UNKNOWN
+        - QWERTY
+        - QWERTZ
+        - AZERTY
+    MemoryUnit:
+      type: string
+      default: UNKNOWN
+      enum:
+        - UNKNOWN
+        - BIT
+        - BYTE
+        - KILOBYTE
+        - MEGABYTE
+        - GIGABYTE
+        - TERABYTE
+    ScreenPanel:
+      type: string
+      default: UNKNOWN
+      enum:
+        - UNKNOWN
+        - IPS
+        - OLED
+    ScreenResolution:
+      type: object
+      properties:
+        width:
+          type: integer
+          format: int64
+        height:
+          type: integer
+          format: int64
+    StorageDriver:
+      type: string
+      default: UNKNOWN
+      enum:
+        - UNKNOWN
+        - HDD
+        - SSD
+    pbCPU:
+      type: object
+      properties:
+        brand:
+          type: string
+        name:
+          type: string
+        numberCores:
+          type: integer
+          format: int64
+        numberThreads:
+          type: integer
+          format: int64
+        minGhz:
+          type: number
+          format: double
+        maxGhz:
+          type: number
+          format: double
+    pbCreateLaptopRequest:
+      type: object
+      properties:
+        laptop:
+          $ref: '#/components/schemas/pbLaptop'
+    pbCreateLaptopResponse:
+      type: object
+      properties:
+        id:
+          type: string
+    pbFilter:
+      type: object
+      properties:
+        maxPriceUsd:
+          type: number
+          format: double
+        minCpuCores:
+          type: integer
+          format: int64
+        minCpuGhz:
+          type: number
+          format: double
+        minRam:
+          $ref: '#/components/schemas/pbMemory'
+    pbGPU:
+      type: object
+      properties:
+        brand:
+          type: string
+        name:
+          type: string
+        minGhz:
+          type: number
+          format: double
+        maxGhz:
+          type: number
+          format: double
+        memory:
+          $ref: '#/components/schemas/pbMemory'
+    pbImageInfo:
+      type: object
+      properties:
+        laptopId:
+          type: string
+        imageType:
+          type: string
+    pbKeyboard:
+      type: object
+      properties:
+        layout:
+          $ref: '#/components/schemas/KeyboardLayout'
+        backlit:
+          type: boolean
+    pbLaptop:
+      type: object
+      properties:
+        id:
+          type: string
+        brand:
+          type: string
+        name:
+          type: string
+        cpu:
+          $ref: '#/components/schemas/pbCPU'
+        ram:
+          $ref: '#/components/schemas/pbMemory'
+        gpus:
+          type: array
+          items:
+            $ref: '#/components/schemas/pbGPU'
+        storages:
+          type: array
+          items:
+            $ref: '#/components/schemas/pbStorage'
+        screen:
+          $ref: '#/components/schemas/pbScreen'
+        keyboard:
+          $ref: '#/components/schemas/pbKeyboard'
+        weightKg:
+          type: number
+          format: double
+        weightLb:
+          type: number
+          format: double
+        priceUsd:
+          type: number
+          format: double
+        releaseYear:
+          type: integer
+          format: int64
+        updatedAt:
+          type: string
+          format: date-time
+    pbMemory:
+      type: object
+      properties:
+        value:
+          type: string
+          format: uint64
+        unit:
+          $ref: '#/components/schemas/MemoryUnit'
+    pbRateLaptopRequest:
+      type: object
+      properties:
+        laptopId:
+          type: string
+        score:
+          type: number
+          format: double
+    pbRateLaptopResponse:
+      type: object
+      properties:
+        laptopId:
+          type: string
+        ratedCount:
+          type: integer
+          format: int64
+        averageScore:
+          type: number
+          format: double
+    pbScreen:
+      type: object
+      properties:
+        sizeInch:
+          type: number
+          format: float
+        resolution:
+          $ref: '#/components/schemas/ScreenResolution'
+        panel:
+          $ref: '#/components/schemas/ScreenPanel'
+        multitouch:
+          type: boolean
+    pbSearchLaptopResponse:
+      type: object
+      properties:
+        laptop:
+          $ref: '#/components/schemas/pbLaptop'
+    pbStorage:
+      type: object
+      properties:
+        driver:
+          $ref: '#/components/schemas/StorageDriver'
+        memory:
+          $ref: '#/components/schemas/pbMemory'
+    pbUploadImageRequest:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/pbImageInfo'
+        chunkData:
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          format: byte
+    pbUploadImageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        size:
+          type: integer
+          format: int64
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties:
+        type: object
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'

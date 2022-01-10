@@ -13,6 +13,8 @@ require (
 
 require github.com/golang-jwt/jwt v3.2.2+incompatible
 
+require github.com/grpc-ecosystem/grpc-gateway/v2 v2.7.2
+
 require (
 	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

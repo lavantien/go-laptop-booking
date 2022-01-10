@@ -11,6 +11,7 @@ import (
 type AuthServer struct {
 	userStore  UserStore
 	jwtManager *JWTManager
+	pb.UnimplementedAuthServiceServer
 }
 
 func NewAuthServer(userStore UserStore, jwtManager *JWTManager) *AuthServer {

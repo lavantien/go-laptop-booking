@@ -1,9 +1,11 @@
 syntax = "proto3";
 
 package pb;
-option go_package = "/pb";
+option go_package = ".;pb";
 option java_package = "com.github.lavantien.java-laptop-booking.pb";
 option java_multiple_files = true;
+
+import "google/api/annotations.proto";
 
 message LoginRequest {
 	string username = 1;
@@ -15,5 +17,10 @@ message LoginResponse {
 }
 
 service AuthService {
-	rpc Login(LoginRequest) returns (LoginResponse);
+	rpc Login(LoginRequest) returns (LoginResponse) {
+		option (google.api.http) = {
+			post : "/v1/auth/login"
+			body : "*"
+		};
+	};
 }
