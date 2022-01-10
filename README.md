@@ -11,7 +11,7 @@
 - [X] Search laptop Server-streaming gRPC
 - [X] Chunk uploading image with client-streaming gRPC
 - [X] Laptop rating bidirectional-streaming gRPC
-- [ ] gRPC reflection and Evans CLI
+- [X] gRPC reflection and Evans CLI + grpcui
 - [ ] gRPC interceptor & JWT authentication
 - [ ] Secure gRPC connection with SSL/TLS
 - [ ] Load balancing gRPC service with NGINX
@@ -23,6 +23,8 @@
 - **[gRPC](https://grpc.io/)**
 - **[panicparse](https://github.com/maruel/panicparse)**
 - **[zsh](https://github.com/ohmyzsh/ohmyzsh)**
+- **[Evans CLI](https://github.com/ktr0731/evans)**
+- **[grpcui](https://github.com/fullstorydev/grpcui)**
 
 ## Get Start
 
@@ -32,6 +34,8 @@
 - Run the client: `make client`
 - Run the tests: `make test`
 - Run the coverage and update the badge: `make badge`
+- Run the Evans CLI: `make evans`
+- Run the grpcui Web Interface: `make grpcui`
 
 ## Sample
 

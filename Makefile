@@ -24,4 +24,10 @@ update:
 	go get -u ./...
 	go mod tidy
 
-.PHONY: run gen clean test cover badge update
+evans:
+	evans -r repl -p 8080
+
+grpcui:
+	grpcui -plaintext localhost:8080
+
+.PHONY: run gen clean test cover badge update evans grpcui
