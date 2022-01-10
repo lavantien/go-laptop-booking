@@ -113,7 +113,7 @@ func (server *LaptopServer) UploadImage(stream pb.LaptopService_UploadImageServe
 		}
 		log.Print("waiting to receive more data")
 		req, err := stream.Recv()
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			log.Print("no more data")
 			break
 		}

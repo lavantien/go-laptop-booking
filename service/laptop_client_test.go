@@ -3,6 +3,7 @@ package service
 import (
 	"bufio"
 	"context"
+	"errors"
 	"fmt"
 	"go-laptop-booking/pb"
 	"go-laptop-booking/sample"
@@ -98,7 +99,7 @@ func TestClientSearchLaptop(t *testing.T) {
 	found := 0
 	for {
 		res, err := stream.Recv()
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			break
 		}
 		require.NoError(t, err)
@@ -141,7 +142,7 @@ func TestClientUploadImage(t *testing.T) {
 	size := 0
 	for {
 		n, err := reader.Read(buffer)
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			break
 		}
 		require.NoError(t, err)

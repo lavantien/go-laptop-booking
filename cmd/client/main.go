@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"context"
+	"errors"
 	"flag"
 	"go-laptop-booking/pb"
 	"go-laptop-booking/sample"
@@ -52,7 +53,7 @@ func searchLaptop(laptopClient pb.LaptopServiceClient, filter *pb.Filter) {
 	}
 	for {
 		res, err := stream.Recv()
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			return
 		}
 		if err != nil {
@@ -97,7 +98,7 @@ func uploadImage(laptopClient pb.LaptopServiceClient, laptopID string, imagePath
 	buffer := make([]byte, 1024)
 	for {
 		n, err := reader.Read(buffer)
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			break
 		}
 		if err != nil {

@@ -1,27 +1,27 @@
 {
-  "id": "5e6ca246-5eb3-4ea7-86f1-79b5f38409d9",
-  "brand": "Lenovo",
-  "name": "Thinkpad P53",
+  "id": "15ecfd12-2dde-4b71-96f0-33b9986b74ce",
+  "brand": "Dell",
+  "name": "XPS",
   "cpu": {
     "brand": "AMD",
-    "name": "Ryzen 5 PRO 3500U",
+    "name": "Ryzen 3 PRO 3200GE",
     "number_cores": 7,
-    "number_threads": 7,
-    "min_ghz": 2.141784080453676,
-    "max_ghz": 2.1607374814711173
+    "number_threads": 9,
+    "min_ghz": 2.9934569189597764,
+    "max_ghz": 3.611954744733413
   },
   "ram": {
-    "value": "29",
+    "value": "18",
     "unit": "GIGABYTE"
   },
   "gpus": [
     {
-      "brand": "AMD",
-      "name": "RX Vega-56",
-      "min_ghz": 1.3221137836988563,
-      "max_ghz": 1.322383574127565,
+      "brand": "NVIDIA",
+      "name": "GTX 1070",
+      "min_ghz": 1.394881107721203,
+      "max_ghz": 1.9792770843558525,
       "memory": {
-        "value": "4",
+        "value": "2",
         "unit": "GIGABYTE"
       }
     }
@@ -30,33 +30,33 @@
     {
       "driver": "SSD",
       "memory": {
-        "value": "133",
+        "value": "762",
         "unit": "GIGABYTE"
       }
     },
     {
       "driver": "HDD",
       "memory": {
-        "value": "2",
+        "value": "5",
         "unit": "TERABYTE"
       }
     }
   ],
   "screen": {
-    "size_inch": 14.451143,
+    "size_inch": 13.651237,
     "resolution": {
-      "width": 2963,
-      "height": 1667
+      "width": 6259,
+      "height": 3521
     },
     "panel": "OLED",
-    "multitouch": false
+    "multitouch": true
   },
   "keyboard": {
-    "layout": "QWERTZ",
+    "layout": "AZERTY",
     "backlit": false
   },
-  "weight_kg": 2.6060141047308663,
-  "price_usd": 1888.4217310739466,
-  "release_year": 2015,
-  "updated_at": "2022-01-10T02:46:19.250591397Z"
+  "weight_kg": 2.9356245295039285,
+  "price_usd": 1949.6110293508505,
+  "release_year": 2017,
+  "updated_at": "2022-01-10T02:58:09.863149159Z"
 }
