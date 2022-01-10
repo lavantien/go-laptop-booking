@@ -1,62 +1,62 @@
 {
-  "id": "15ecfd12-2dde-4b71-96f0-33b9986b74ce",
-  "brand": "Dell",
-  "name": "XPS",
-  "cpu": {
-    "brand": "AMD",
-    "name": "Ryzen 3 PRO 3200GE",
-    "number_cores": 7,
-    "number_threads": 9,
-    "min_ghz": 2.9934569189597764,
-    "max_ghz": 3.611954744733413
+  "id":  "b2a83550-f15b-46e9-b8a1-e69e7fdc46a9",
+  "brand":  "Lenovo",
+  "name":  "Thinkpad P53",
+  "cpu":  {
+    "brand":  "Intel",
+    "name":  "Core i5-9400F",
+    "number_cores":  4,
+    "number_threads":  9,
+    "min_ghz":  2.3303338946719316,
+    "max_ghz":  3.27868929991219
   },
-  "ram": {
-    "value": "18",
-    "unit": "GIGABYTE"
+  "ram":  {
+    "value":  "18",
+    "unit":  "GIGABYTE"
   },
-  "gpus": [
+  "gpus":  [
     {
-      "brand": "NVIDIA",
-      "name": "GTX 1070",
-      "min_ghz": 1.394881107721203,
-      "max_ghz": 1.9792770843558525,
-      "memory": {
-        "value": "2",
-        "unit": "GIGABYTE"
+      "brand":  "NVIDIA",
+      "name":  "GTX 1070",
+      "min_ghz":  1.122151247960658,
+      "max_ghz":  1.8886146437629654,
+      "memory":  {
+        "value":  "6",
+        "unit":  "GIGABYTE"
       }
     }
   ],
-  "storages": [
+  "storages":  [
     {
-      "driver": "SSD",
-      "memory": {
-        "value": "762",
-        "unit": "GIGABYTE"
+      "driver":  "SSD",
+      "memory":  {
+        "value":  "680",
+        "unit":  "GIGABYTE"
       }
     },
     {
-      "driver": "HDD",
-      "memory": {
-        "value": "5",
-        "unit": "TERABYTE"
+      "driver":  "HDD",
+      "memory":  {
+        "value":  "2",
+        "unit":  "TERABYTE"
       }
     }
   ],
-  "screen": {
-    "size_inch": 13.651237,
-    "resolution": {
-      "width": 6259,
-      "height": 3521
+  "screen":  {
+    "size_inch":  13.005718,
+    "resolution":  {
+      "width":  6570,
+      "height":  3696
     },
-    "panel": "OLED",
-    "multitouch": true
+    "panel":  "IPS",
+    "multitouch":  true
   },
-  "keyboard": {
-    "layout": "AZERTY",
-    "backlit": false
+  "keyboard":  {
+    "layout":  "QWERTY",
+    "backlit":  true
   },
-  "weight_kg": 2.9356245295039285,
-  "price_usd": 1949.6110293508505,
-  "release_year": 2017,
-  "updated_at": "2022-01-10T02:58:09.863149159Z"
+  "weight_kg":  2.9802721509273002,
+  "price_usd":  1664.033460788798,
+  "release_year":  2017,
+  "updated_at":  "2022-01-10T07:51:03.107039982Z"
 }

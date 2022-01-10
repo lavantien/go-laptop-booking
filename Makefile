@@ -1,8 +1,12 @@
+server: SHELL:=/usr/bin/zsh
 server:
-	go run cmd/server/main.go -port 8080
+	export GOTRACEBACK=all
+	go run cmd/server/main.go -port 8080 |& pp
 
+client: SHELL:=/usr/bin/zsh
 client:
-	go run cmd/client/main.go -address 0.0.0.0:8080
+	export GOTRACEBACK=all
+	go run cmd/client/main.go -address 0.0.0.0:8080 |& pp
 
 gen:
 	protoc --proto_path=proto --go_out=plugins=grpc:pb --go_opt=paths=source_relative proto/*.proto
@@ -16,4 +20,8 @@ test:
 badge:
 	gopherbadger -md="README.md"
 
-.PHONY: run gen clean test cover badge
+update:
+	go get -u ./...
+	go mod tidy
+
+.PHONY: run gen clean test cover badge update
