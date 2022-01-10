@@ -10,6 +10,8 @@ import (
 	"go-laptop-booking/sample"
 	"io/ioutil"
 	"log"
+	"os"
+	"path"
 	"strings"
 	"time"
 
@@ -41,6 +43,16 @@ func testUploadImage(laptopClient *client.LaptopClient) {
 	laptop := sample.NewLaptop()
 	laptopClient.CreateLaptop(laptop)
 	laptopClient.UploadImage(laptop.GetId(), "tmp/laptop.jpg")
+	// Clean up img directory
+	dir, err := ioutil.ReadDir("img")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, d := range dir {
+		if err := os.RemoveAll(path.Join([]string{"img", d.Name()}...)); err != nil {
+			log.Fatal(err)
+		}
+	}
 }
 
 func testRateLaptop(laptopClient *client.LaptopClient) {
@@ -137,5 +149,8 @@ func main() {
 		log.Fatal("cannot dial server: ", err)
 	}
 	laptopClient := client.NewLaptopClient(cc2)
+	testCreateLaptop(laptopClient)
+	testSearchLaptop(laptopClient)
+	testUploadImage(laptopClient)
 	testRateLaptop(laptopClient)
 }
