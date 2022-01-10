@@ -28,4 +28,10 @@ evans:
 grpcui:
 	grpcui -plaintext localhost:8080
 
-.PHONY: server client gen clean test cover badge update evans grpcui
+cert:
+	cd cert; ./gen.sh; cd ..
+
+verifyssl:
+	cd cert; openssl verify -CAfile ca-cert.pem server-cert.pem; cd ..
+
+.PHONY: server client gen clean test cover badge update evans grpcui cert verifyssl

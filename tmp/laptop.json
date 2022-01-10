@@ -1,25 +1,25 @@
 {
-  "id":  "c54f14cf-cb67-4ca0-99ee-a2a6c45071a4",
-  "brand":  "Apple",
-  "name":  "Macbook Pro",
+  "id":  "4b53f4da-9edd-4546-959e-b3aee792d6f6",
+  "brand":  "Lenovo",
+  "name":  "Thinkpad P53",
   "cpu":  {
-    "brand":  "AMD",
-    "name":  "Ryzen 3 PRO 3200GE",
-    "number_cores":  6,
+    "brand":  "Intel",
+    "name":  "Core i7-9750H",
+    "number_cores":  4,
     "number_threads":  10,
-    "min_ghz":  2.336715202351845,
-    "max_ghz":  4.528579761061767
+    "min_ghz":  2.4188542629971614,
+    "max_ghz":  3.4007552519771123
   },
   "ram":  {
-    "value":  "46",
+    "value":  "34",
     "unit":  "GIGABYTE"
   },
   "gpus":  [
     {
-      "brand":  "AMD",
-      "name":  "RX Vega-56",
-      "min_ghz":  1.2164322592329468,
-      "max_ghz":  1.768435621712359,
+      "brand":  "NVIDIA",
+      "name":  "RTX 2070",
+      "min_ghz":  1.063124804189266,
+      "max_ghz":  1.1472532098444816,
       "memory":  {
         "value":  "2",
         "unit":  "GIGABYTE"
@@ -30,7 +30,7 @@
     {
       "driver":  "SSD",
       "memory":  {
-        "value":  "924",
+        "value":  "725",
         "unit":  "GIGABYTE"
       }
     },
@@ -43,20 +43,20 @@
     }
   ],
   "screen":  {
-    "size_inch":  15.575733,
+    "size_inch":  15.533388,
     "resolution":  {
-      "width":  3804,
-      "height":  2140
+      "width":  2812,
+      "height":  1582
     },
     "panel":  "OLED",
-    "multitouch":  true
+    "multitouch":  false
   },
   "keyboard":  {
     "layout":  "AZERTY",
-    "backlit":  false
+    "backlit":  true
   },
-  "weight_kg":  1.7444531974877184,
-  "price_usd":  2121.727224327794,
-  "release_year":  2016,
-  "updated_at":  "2022-01-10T10:17:10.359221103Z"
+  "weight_kg":  1.3018117786792285,
+  "price_usd":  1832.8449439661827,
+  "release_year":  2015,
+  "updated_at":  "2022-01-10T11:29:21.977267828Z"
 }

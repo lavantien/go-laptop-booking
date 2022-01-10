@@ -1,7 +1,7 @@
 # Laptop Booking Application in Golang and gRPC
 
 ![ci-test](https://github.com/lavantien/go-laptop-booking/actions/workflows/ci.yml/badge.svg?branch=master)
- <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-57%25-brightgreen.svg?longCache=true&style=flat)</a>
+ <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-56%25-brightgreen.svg?longCache=true&style=flat)</a>
 
 ## Goals
 
@@ -14,7 +14,7 @@
 - [X] gRPC reflection and Evans CLI + grpcui
 - [X] Add user API
 - [X] gRPC interceptor & JWT authentication with refresh token
-- [ ] Secure gRPC connection with SSL/TLS
+- [X] Secure gRPC connection with Mutual SSL/TLS
 - [ ] Load balancing gRPC service with NGINX
 - [ ] Generate RESTful service and Swagger documentation with gRPC gateway
 
@@ -38,6 +38,8 @@
 - Run the coverage and update the badge: `make badge`
 - Run the Evans CLI: `make evans`
 - Run the grpcui Web Interface: `make grpcui`
+- Verify the SSL certs: `make verifyssl`
+- Remake SSL certs: `make cert`
 
 ## Sample
 
