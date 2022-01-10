@@ -1,27 +1,27 @@
 {
-  "id":  "4b53f4da-9edd-4546-959e-b3aee792d6f6",
+  "id":  "0b0d3840-da6d-4072-879b-04b66567e602",
   "brand":  "Lenovo",
-  "name":  "Thinkpad P53",
+  "name":  "Thinkpad P1",
   "cpu":  {
     "brand":  "Intel",
-    "name":  "Core i7-9750H",
-    "number_cores":  4,
-    "number_threads":  10,
-    "min_ghz":  2.4188542629971614,
-    "max_ghz":  3.4007552519771123
+    "name":  "Core i5-9400F",
+    "number_cores":  2,
+    "number_threads":  6,
+    "min_ghz":  3.053863708570752,
+    "max_ghz":  3.942330551843182
   },
   "ram":  {
-    "value":  "34",
+    "value":  "44",
     "unit":  "GIGABYTE"
   },
   "gpus":  [
     {
-      "brand":  "NVIDIA",
-      "name":  "RTX 2070",
-      "min_ghz":  1.063124804189266,
-      "max_ghz":  1.1472532098444816,
+      "brand":  "AMD",
+      "name":  "RX Vega-56",
+      "min_ghz":  1.0701717598830138,
+      "max_ghz":  1.79955609479937,
       "memory":  {
-        "value":  "2",
+        "value":  "6",
         "unit":  "GIGABYTE"
       }
     }
@@ -30,33 +30,33 @@
     {
       "driver":  "SSD",
       "memory":  {
-        "value":  "725",
+        "value":  "257",
         "unit":  "GIGABYTE"
       }
     },
     {
       "driver":  "HDD",
       "memory":  {
-        "value":  "1",
+        "value":  "6",
         "unit":  "TERABYTE"
       }
     }
   ],
   "screen":  {
-    "size_inch":  15.533388,
+    "size_inch":  14.907698,
     "resolution":  {
-      "width":  2812,
-      "height":  1582
+      "width":  5994,
+      "height":  3372
     },
     "panel":  "OLED",
-    "multitouch":  false
+    "multitouch":  true
   },
   "keyboard":  {
-    "layout":  "AZERTY",
+    "layout":  "QWERTY",
     "backlit":  true
   },
-  "weight_kg":  1.3018117786792285,
-  "price_usd":  1832.8449439661827,
-  "release_year":  2015,
-  "updated_at":  "2022-01-10T11:29:21.977267828Z"
+  "weight_kg":  2.271601061888831,
+  "price_usd":  2836.3694121325816,
+  "release_year":  2017,
+  "updated_at":  "2022-01-10T13:32:02.770353244Z"
 }

@@ -1,7 +1,7 @@
 # Laptop Booking Application in Golang and gRPC
 
 ![ci-test](https://github.com/lavantien/go-laptop-booking/actions/workflows/ci.yml/badge.svg?branch=master)
- <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-56%25-brightgreen.svg?longCache=true&style=flat)</a>
+ <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-57%25-brightgreen.svg?longCache=true&style=flat)</a>
 
 ## Goals
 
@@ -15,18 +15,20 @@
 - [X] Add user API
 - [X] gRPC interceptor & JWT authentication with refresh token
 - [X] Secure gRPC connection with Mutual SSL/TLS
-- [ ] Load balancing gRPC service with NGINX
+- [X] Load balancing gRPC Mutual SSL/TLS services with NGINX
 - [ ] Generate RESTful service and Swagger documentation with gRPC gateway
 
 ## Technology Stack
 
 - **[Go 1.17](https://go.dev/)**
 - **[gRPC](https://grpc.io/)**
-- **[panicparse](https://github.com/maruel/panicparse)**
 - **[zsh](https://github.com/ohmyzsh/ohmyzsh)**
+- **[panicparse on zsh](https://github.com/maruel/panicparse)**
 - **[Evans CLI](https://github.com/ktr0731/evans)**
 - **[grpcui](https://github.com/fullstorydev/grpcui)**
 - **[golang-jwt](https://github.com/golang-jwt/jwt)**
+- **[linuxbrew](https://docs.brew.sh/Homebrew-on-Linux)**
+- **[NGINX on linuxbrew](https://nginx.org/en/docs/)**
 
 ## Get Start
 
@@ -40,8 +42,66 @@
 - Run the grpcui Web Interface: `make grpcui`
 - Verify the SSL certs: `make verifyssl`
 - Remake SSL certs: `make cert`
+- Update NGINX configs and certs: `make nginxconf`
 
 ## Sample
+
+- NGINX config
+
+<details>
+	<summary>See details</summary>
+
+```nginx
+worker_processes 1;
+
+error_log /home/savaka/go/src/github.com/lavantien/go-laptop-booking/log/nginx/error.log;
+
+events {
+	worker_connections 10;
+}
+
+http {
+	access_log /home/savaka/go/src/github.com/lavantien/go-laptop-booking/log/nginx/access.log;
+
+	upstream auth_services {
+		server 0.0.0.0:50051;
+	}
+
+	upstream laptop_services {
+		server 0.0.0.0:50052;
+	}
+
+	server {
+		listen 8080 ssl http2;
+
+		# Mutual TLS between gRPC client and NGINX
+		ssl_certificate cert/server-cert.pem;
+		ssl_certificate_key cert/server-key.pem;
+
+		ssl_client_certificate cert/ca-cert.pem;
+		ssl_verify_client on;
+
+		location /pb.AuthService {
+			grpc_pass grpcs://auth_services;
+
+			# Mutual TLS between NGINX and gRPC server
+			grpc_ssl_certificate cert/server-cert.pem;
+			grpc_ssl_certificate_key cert/server-key.pem;
+		}
+
+		location /pb.LaptopService {
+			grpc_pass grpcs://laptop_services;
+
+			# Mutual TLS between NGINX and gRPC server
+			grpc_ssl_certificate cert/server-cert.pem;
+			grpc_ssl_certificate_key cert/server-key.pem;
+		}
+	}
+}
+
+```
+
+</details>
 
 - Laptop JSON
 
