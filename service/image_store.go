@@ -42,6 +42,7 @@ func (store *DiskImageStore) Save(laptopID string, imageType string, imageData b
 	if err != nil {
 		return "", fmt.Errorf("cannot create image file: %w", err)
 	}
+	defer file.Close()
 	_, err = imageData.WriteTo(file)
 	if err != nil {
 		return "", fmt.Errorf("cannot write image to file: %w", err)
