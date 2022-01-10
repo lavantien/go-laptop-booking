@@ -21,7 +21,7 @@
 
 - **[Go 1.17](https://go.dev/)**
 - **[gRPC](https://grpc.io/)**
-- **[panicparse](https://github.com/maruel/panicparse)
+- **[panicparse](https://github.com/maruel/panicparse)**
 - **[zsh](https://github.com/ohmyzsh/ohmyzsh)**
 
 ## Get Start
