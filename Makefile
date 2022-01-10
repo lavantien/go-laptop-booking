@@ -3,10 +3,8 @@ server:
 	export GOTRACEBACK=all
 	go run cmd/server/main.go -port 8080 |& pp
 
-client: SHELL:=/usr/bin/zsh
 client:
-	export GOTRACEBACK=all
-	go run cmd/client/main.go -address 0.0.0.0:8080 |& pp
+	go run cmd/client/main.go -address 0.0.0.0:8080
 
 gen:
 	protoc --proto_path=proto --go_out=plugins=grpc:pb --go_opt=paths=source_relative proto/*.proto
@@ -30,4 +28,4 @@ evans:
 grpcui:
 	grpcui -plaintext localhost:8080
 
-.PHONY: run gen clean test cover badge update evans grpcui
+.PHONY: server client gen clean test cover badge update evans grpcui

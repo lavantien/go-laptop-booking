@@ -1,27 +1,27 @@
 {
-  "id":  "b2a83550-f15b-46e9-b8a1-e69e7fdc46a9",
-  "brand":  "Lenovo",
-  "name":  "Thinkpad P53",
+  "id":  "c54f14cf-cb67-4ca0-99ee-a2a6c45071a4",
+  "brand":  "Apple",
+  "name":  "Macbook Pro",
   "cpu":  {
-    "brand":  "Intel",
-    "name":  "Core i5-9400F",
-    "number_cores":  4,
-    "number_threads":  9,
-    "min_ghz":  2.3303338946719316,
-    "max_ghz":  3.27868929991219
+    "brand":  "AMD",
+    "name":  "Ryzen 3 PRO 3200GE",
+    "number_cores":  6,
+    "number_threads":  10,
+    "min_ghz":  2.336715202351845,
+    "max_ghz":  4.528579761061767
   },
   "ram":  {
-    "value":  "18",
+    "value":  "46",
     "unit":  "GIGABYTE"
   },
   "gpus":  [
     {
-      "brand":  "NVIDIA",
-      "name":  "GTX 1070",
-      "min_ghz":  1.122151247960658,
-      "max_ghz":  1.8886146437629654,
+      "brand":  "AMD",
+      "name":  "RX Vega-56",
+      "min_ghz":  1.2164322592329468,
+      "max_ghz":  1.768435621712359,
       "memory":  {
-        "value":  "6",
+        "value":  "2",
         "unit":  "GIGABYTE"
       }
     }
@@ -30,33 +30,33 @@
     {
       "driver":  "SSD",
       "memory":  {
-        "value":  "680",
+        "value":  "924",
         "unit":  "GIGABYTE"
       }
     },
     {
       "driver":  "HDD",
       "memory":  {
-        "value":  "2",
+        "value":  "1",
         "unit":  "TERABYTE"
       }
     }
   ],
   "screen":  {
-    "size_inch":  13.005718,
+    "size_inch":  15.575733,
     "resolution":  {
-      "width":  6570,
-      "height":  3696
+      "width":  3804,
+      "height":  2140
     },
-    "panel":  "IPS",
+    "panel":  "OLED",
     "multitouch":  true
   },
   "keyboard":  {
-    "layout":  "QWERTY",
-    "backlit":  true
+    "layout":  "AZERTY",
+    "backlit":  false
   },
-  "weight_kg":  2.9802721509273002,
-  "price_usd":  1664.033460788798,
-  "release_year":  2017,
-  "updated_at":  "2022-01-10T07:51:03.107039982Z"
+  "weight_kg":  1.7444531974877184,
+  "price_usd":  2121.727224327794,
+  "release_year":  2016,
+  "updated_at":  "2022-01-10T10:17:10.359221103Z"
 }
