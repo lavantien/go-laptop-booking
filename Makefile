@@ -13,7 +13,7 @@ clean:
 test:
 	go test -cover -coverprofile=profile.cov -race -v -count=1 ./...
 
-badger:
+badge:
 	gopherbadger -md="README.md"
 
-.PHONY: run gen clean test cover badger
+.PHONY: run gen clean test cover badge

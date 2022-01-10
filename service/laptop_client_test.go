@@ -1,12 +1,16 @@
 package service
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"go-laptop-booking/pb"
 	"go-laptop-booking/sample"
 	"go-laptop-booking/serializer"
 	"io"
 	"net"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -16,7 +20,8 @@ import (
 
 func TestClientCreateLaptop(t *testing.T) {
 	t.Parallel()
-	laptopServer, serverAddress := startTestLaptopServer(t, NewInMemoryLaptopStore())
+	laptopStore := NewInMemoryLaptopStore()
+	serverAddress := startTestLaptopServer(t, laptopStore, nil)
 	laptopClient := newTestLaptopClient(t, serverAddress)
 	laptop := sample.NewLaptop()
 	expectedID := laptop.Id
@@ -28,7 +33,7 @@ func TestClientCreateLaptop(t *testing.T) {
 	require.NotNil(t, res)
 	require.Equal(t, expectedID, res.Id)
 	// Check that the laptop is saved to the store
-	other, err := laptopServer.Store.Find(res.Id)
+	other, err := laptopStore.Find(res.Id)
 	require.NoError(t, err)
 	require.NotNil(t, other)
 	// Check the saved laptop is the same as the one we send
@@ -46,7 +51,7 @@ func TestClientSearchLaptop(t *testing.T) {
 			Unit:  pb.Memory_GIGABYTE,
 		},
 	}
-	store := NewInMemoryLaptopStore()
+	laptopStore := NewInMemoryLaptopStore()
 	expectedIDs := make(map[string]bool)
 	for i := 0; i < 6; i++ {
 		laptop := sample.NewLaptop()
@@ -80,10 +85,10 @@ func TestClientSearchLaptop(t *testing.T) {
 			}
 			expectedIDs[laptop.Id] = true
 		}
-		err := store.Save(laptop)
+		err := laptopStore.Save(laptop)
 		require.NoError(t, err)
 	}
-	_, serverAddress := startTestLaptopServer(t, store)
+	serverAddress := startTestLaptopServer(t, laptopStore, nil)
 	laptopClient := newTestLaptopClient(t, serverAddress)
 	req := &pb.SearchLaptopRequest{
 		Filter: filter,
@@ -104,14 +109,68 @@ func TestClientSearchLaptop(t *testing.T) {
 	require.Equal(t, len(expectedIDs), found)
 }
 
-func startTestLaptopServer(t *testing.T, store LaptopStore) (*LaptopServer, string) {
-	laptopServer := NewLaptopServer(store)
+func TestClientUploadImage(t *testing.T) {
+	t.Parallel()
+	testImageFolder := "../tmp"
+	laptopStore := NewInMemoryLaptopStore()
+	imageStore := NewDiskImageStore(testImageFolder)
+	laptop := sample.NewLaptop()
+	err := laptopStore.Save(laptop)
+	require.NoError(t, err)
+	serverAddress := startTestLaptopServer(t, laptopStore, imageStore)
+	laptopClient := newTestLaptopClient(t, serverAddress)
+	imagePath := fmt.Sprintf("%s/laptop.jpg", testImageFolder)
+	file, err := os.Open(imagePath)
+	require.NoError(t, err)
+	defer file.Close()
+	stream, err := laptopClient.UploadImage(context.Background())
+	require.NoError(t, err)
+	imageType := filepath.Ext(imagePath)
+	req := &pb.UploadImageRequest{
+		Data: &pb.UploadImageRequest_Info{
+			Info: &pb.ImageInfo{
+				LaptopId:  laptop.GetId(),
+				ImageType: imageType,
+			},
+		},
+	}
+	err = stream.Send(req)
+	require.NoError(t, err)
+	reader := bufio.NewReader(file)
+	buffer := make([]byte, 1024)
+	size := 0
+	for {
+		n, err := reader.Read(buffer)
+		if err == io.EOF {
+			break
+		}
+		require.NoError(t, err)
+		size += n
+		req := &pb.UploadImageRequest{
+			Data: &pb.UploadImageRequest_ChunkData{
+				ChunkData: buffer[:n],
+			},
+		}
+		err = stream.Send(req)
+		require.NoError(t, err)
+	}
+	res, err := stream.CloseAndRecv()
+	require.NoError(t, err)
+	require.NotZero(t, res.GetId())
+	require.EqualValues(t, size, res.GetSize())
+	savedImagePath := fmt.Sprintf("%s/%s%s", testImageFolder, res.GetId(), imageType)
+	require.FileExists(t, savedImagePath)
+	require.NoError(t, os.Remove(savedImagePath))
+}
+
+func startTestLaptopServer(t *testing.T, laptopStore LaptopStore, imageStore ImageStore) string {
+	laptopServer := NewLaptopServer(laptopStore, imageStore)
 	grpcServer := grpc.NewServer()
 	pb.RegisterLaptopServiceServer(grpcServer, laptopServer)
 	listener, err := net.Listen("tcp", ":0") // random available port
 	require.NoError(t, err)
 	go grpcServer.Serve(listener) // block call
-	return laptopServer, listener.Addr().String()
+	return listener.Addr().String()
 }
 
 func newTestLaptopClient(t *testing.T, serverAddress string) pb.LaptopServiceClient {

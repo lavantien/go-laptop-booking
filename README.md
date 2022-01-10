@@ -1,7 +1,7 @@
 # Laptop Booking Application in Golang and gRPC
 
 ![ci-test](https://github.com/lavantien/go-laptop-booking/actions/workflows/ci.yml/badge.svg?branch=master)
- <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-76%25-brightgreen.svg?longCache=true&style=flat)</a>
+ <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-75%25-brightgreen.svg?longCache=true&style=flat)</a>
 
 ## Goals
 
@@ -9,7 +9,7 @@
 - [X] Serialize protobuf messages
 - [X] Unary gRPC
 - [X] Server-streaming gRPC
-- [ ] Chunk uploading with client-streaming gRPC
+- [X] Chunk uploading image with client-streaming gRPC
 - [ ] Bidirectional-streaming gRPC
 - [ ] gRPC reflection and Evans CLI
 - [ ] gRPC interceptor & JWT authentication
@@ -29,7 +29,7 @@
 - Run the server: `make server`
 - Run the client: `make client`
 - Run the tests: `make test`
-- Run the coverage and update the badger: `make badger`
+- Run the coverage and update the badge: `make badge`
 
 ## Sample
 
